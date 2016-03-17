@@ -1,0 +1,15 @@
+<input class="btn btn-default" id="listorder" type="submit" value="排序" />
+<input class="btn btn-default" id="selAll" type="button" value="全选" />
+
+<input class="btn btn-default" id="unSelAll" type="button" value="全不选" />
+
+<input class="btn btn-default" id="reverSel" type="button" value="反选" />
+<input class="btn btn-default" id="doDel" type="submit" value="批量删除" />
+<notempty name="rec_list">
+<select  name="posid">
+<volist name="rec_list" id="vo">
+<option value="{$vo.id}">{$vo.name}</option>
+</volist>
+</select>
+<input class="btn btn-default" id="rec_pos" name="rec_pos" type="submit" value="推荐" />
+</notempty>

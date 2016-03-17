@@ -1,0 +1,105 @@
+<include file="Public:header" />
+<div class="container">
+    <div class="row row-offcanvas row-offcanvas-right">
+
+        <div class="col-xs-12 col-sm-9">
+
+					<p class="pull-right visible-xs">
+                        <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle</button>
+                    </p>
+                <div class="col-xs-12">
+                    
+
+                    <h1 class="brand-name text-center">{$one.name}</h1>
+					        <div class="col-xs-12 col-sm-4">
+									<img src="__ROOT__/Uploads/{$one.productthumb}" class="responsive img-thumbnail"/> 
+									</div>
+									<div class="col-xs-12 col-sm-8">
+									<h3>价格：{$one.productprice}元</h3>
+									<h3>
+									产品介绍：</h3>{$one.productdesc}
+									
+                </div>
+						
+
+            </div>
+            <!--/row-->
+			
+			<div class="row box">
+                    
+
+				<h2 class="brand-name">产品评论</h2>
+				<hr>
+				<ul class="list-unstyled" id="comment_list">
+							<notempty name="list">
+							
+						
+							<volist name="list" id="vo">
+							<li class="row">
+								<div class="col-md-1">{$vo.username}</div>
+								<div class="col-md-11">
+								{$vo.comment}
+								</div>
+								<notempty name="vo.reply">
+								<div class="col-md-11 col-md-offset-1">
+								管理员回复:{$vo.reply}
+								</div>
+								</notempty>
+							</li>
+							<hr>
+							</volist>
+						
+						</notempty>
+						</ul>
+						{$page}
+						<notempty name="Think.session.user">
+						<textarea id="comment" name="comment" class="form-control" rows="5" placeholder="请撰写评论！" required></textarea><br/>
+						<button class="btn btn-primary pull-right" id="btn_comment">提交</button>
+						</notempty>
+
+			</div>
+            
+        </div>
+        <!--/.col-xs-12.col-sm-9-->
+		
+				<include file="Public:siderbar" />
+        
+    </div>
+    <!--/row-->
+	</div>
+<!--/.container-->
+
+<include file="Public:footer" />
+ <script>
+	$(function(){
+		$("#btn_comment").click(function(){
+			var comment = $("#comment").val();
+			var resourseid = {$one['id']};
+			var userid = {$Think.session.user.id};
+			var action = "__ROOT__/profile.php/index/comment";
+			if(comment==""){
+				alert("请填写评论内容");
+				return false;
+			}
+			$.ajax({
+				type:"POST",
+				url:action,
+				data:{"resourseid":resourseid,"userid":userid,"comment":comment},
+				success:function(json){
+					if(json.success==1){
+						//alert("评论成功！");
+						var username="{$Think.session.user.name}";
+						var htmlcon="<li  class='row'><div class='col-md-1'>"+username+"</div><div class='col-md-11'>"+json.comment+"</div></li><hr>";
+						$("#comment").hide();
+						$("#btn_comment").hide();
+						$("#comment_list").prepend(htmlcon);
+					}
+					else{
+						alert("您已经评论过该商品了，谢谢再次光顾！");
+						return false;
+					}
+				}
+			});
+		});
+	});
+</script>  

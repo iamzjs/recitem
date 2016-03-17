@@ -1,0 +1,62 @@
+<include file="Public:header" />
+
+<div class="container">
+<include file="Public:slider" />
+    <div class="row row-offcanvas row-offcanvas-right">
+
+        <div class="col-xs-12 col-sm-10 col-sm-push-2">
+
+          <div class="jumbotron main-posts">
+			  <ol class="breadcrumb">
+			  <li><a href="__ROOT__/index.php">首页</a></li>
+			  <li><a href="#">{$modcname}</a></li>
+			  <li class="active">{$technoname}</li>
+			  <span class="pull-right visible-xs">
+                        <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle</button>
+                    </span>
+			</ol>
+					
+					
+					    
+			<h2>最新{$modcname}</h2>
+				<div class="blog-masonry masonry-true">
+					<volist name="list" id="vo">
+                <div class="post-masonry col-xs-6 col-sm-4 col-md-3">
+				      <div class="thumbnail">
+                 <img src="__ROOT__/Uploads/{$vo.thumb}" class="responsive"/>
+							<div class="caption">
+                <p class="text-center"><a href="{:U('show/index',array('id'=>$vo['id']))}">{$vo['name']|msubstr=###,0,20,'utf-8',false}</a>
+						<notempty name="vo.technoname">
+				      <a href="{:U('index/index',array('technoid'=>$vo['technoid']))}"><br/>技术：{$vo['technoname']|msubstr=###,0,20,'utf-8',false}</a>
+					  </notempty>
+                 </p>
+				     </div>
+					 </div>
+                </div>
+				
+				
+					</volist>
+                        
+
+             </div>
+			 
+			 <p class="text-center">{$page}</p>
+				</div>	
+					
+					
+               
+                <!--/.col-xs-6.col-lg-4-->
+
+        </div>
+        <!--/.col-xs-12.col-sm-9-->
+				<include file="Public:siderbar" />
+        
+    </div>
+    <!--/row-->
+	</div>
+<!--/.container-->
+<include file="Public:footer" />  
+<script src="__PUBLIC__/assets/js/vendor/modernizr-2.6.2.min.js"></script>
+<script src="__PUBLIC__/assets/js/plugins.js"></script>
+<script src="__PUBLIC__/assets/js/main.js"></script>
+ 

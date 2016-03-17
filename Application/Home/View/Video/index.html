@@ -1,0 +1,90 @@
+<include file="Public:header-video" />
+
+<div class="container himg-logo">
+
+    <div class="row row-offcanvas row-offcanvas-right">
+
+        <div class="col-xs-12 col-sm-9">
+
+
+            
+						
+			<div  class="jumbotron mlist">
+			<h2>课程视频<p class="pull-right visible-xs">
+                        <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle</button>
+                    </p></h2>
+				<ul class="list-inline row text-center">
+					<volist name="list" id="vo">
+                <li class="col-xs-4 col-lg-3">
+				      <div class="thumbnail">
+                 <img src="__ROOT__/vdvideo/{$vo.thumb}" class="responsive"/>
+							<div class="caption">
+                <p><a href="{:U('home/video/course',array('id'=>$vo['courseid']))}">{$vo['teacher']} {$vo['course']}<br/>{$vo['intro']|msubstr=###,0,8,'utf-8',false}<br/>{$vo['major']}<br/><empty name="vo.skdd">&nbsp;&nbsp;<else />{$vo['skdd']}</empty></a>
+				
+                 </p>
+				     </div>
+					 </div>
+                </li>
+					</volist>
+                        
+
+             </ul>
+			  {$page}
+          </div>
+		  <div class="jumbotron nlist">
+						
+    
+            <h2>搜索</h2>
+			
+            <include file="Public:search-video" />
+			</div>
+
+        </div>
+        <!--/.col-xs-12.col-sm-9-->
+
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+            <div class="list-group">
+			   <h2>热播排行</h2>
+			    <volist name="list_hit" id="vo">
+				
+            <a href="{:U('home/video/course',array('id'=>$vo['courseid']))}" class="list-group-item">{$vo.course}-{$vo.intro}-播放{$vo.hits}次</a>
+			   
+            </volist>
+					<volist name="list" id="vo">
+				
+            
+			    <input type="hidden" id="vaddress{$i-1}" value="{$vo.vaddress}" />
+            </volist>	           
+        </div>
+        <!--/.sidebar-offcanvas-->
+    </div>
+    <!--/row-->
+</div>
+</div>
+<!--/.container-->
+
+    <footer>
+        <p>&copy; 郡笑笙 2015-2018</p>
+		 <p><a href="{:U('admin/login/form')}" >管理入口</a></p>
+    </footer>
+
+
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="__PUBLIC__/assets/js/jquery.min.js"></script>
+<script src="__PUBLIC__/assets/js/bootstrap.min.js"></script>
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="__PUBLIC__/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+<script src="__PUBLIC__/assets/js/offcanvas.js"></script>
+<script>
+    $('.carousel').carousel({
+        interval: 3000 //changes the speed
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<include file="Public:header" />
+<include file="Public:left" />
+<include file="title" />
+<hr/>
+<h3>添加信息</h3>
+<form class="form-horizontal" action="{:U('add',array('mname'=>$mname))}" method="post" enctype="multipart/form-data">
+<input type="hidden" name="userid" value="{$Think.session.admin.id}">
+<input type="hidden" name="moduleid" value="{$moduleid}">
+  <include file="inputs" />
+</form>
+
+
+<include file="Public:footer" />
+<script type="text/javascript">
+ var theForm = document.forms['form1'];
+ if (!theForm) {
+     theForm = document.form1;
+ }
+ function __doPostBack(eventTarget, eventArgument) {
+     if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+         theForm.__EVENTTARGET.value = eventTarget;
+         theForm.__EVENTARGUMENT.value = eventArgument;
+         theForm.submit();
+     }
+ }
+ //联动知识模块
+ $(document).ready(function(){
+  $("#technoid").change(function(){
+   $("#kcdm").empty(); 
+   $.get("__URL__/getCourse",{technoid:$("#technoid").val(),tbl:'course'},function(data){
+   $("#kcdm").append(data);
+   }) 
+  });
+  $("#kcdm").change(function(){
+   $("#sectionid").empty(); 
+   $.get("__URL__/getSection",{kcdm:$("#kcdm").val(),tbl:'section'},function(data){
+   $("#sectionid").append(data);
+   }) 
+  })
+ })
+ </SCRIPT>
+

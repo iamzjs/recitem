@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>{$corp.corpname}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="__PUBLIC__/assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="__PUBLIC__/assets/css/offcanvas.css" rel="stylesheet">
+	  <link href="__PUBLIC__/assets/css/jquery-ui.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/assets/css/style.css" rel="stylesheet">
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]>
+    <script src="__PUBLIC__/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="__PUBLIC__/assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+<!-- Modal -->
+								<div id="admin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+								  <div class="modal-dialog" role="document">
+									<div class="modal-content">
+									  <div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+										<h4 class="modal-title" id="myModalLabel">管理员登录</h4>
+									  </div>
+									  <form class="form-horizontal" action="{:U('login')}" id="adminlogin" method="post" >
+									  <input type="hidden" id="ssion" name="ssion" value="{$Think.session.admin}">
+									  <div class="modal-body">
+										  
+										  <div class="form-group">
+											<label for="username" class="col-sm-2 control-label">用户名</label>
+											<div class="col-sm-10">
+											  <input type="text" class="form-control" id="username" name="name" required>
+											</div>
+										  </div>
+										  
+										  
+										  <div class="form-group">
+											<label for="password" class="col-sm-2 control-label">密码</label>
+											<div class="col-sm-10">
+											  <input type="password" class="form-control" id="password" name="password"  required>
+											</div>
+										  </div>
+										  
+										  
+										  <div class="form-group">
+												<div class="col-sm-offset-2 col-sm-10">
+												  <div class="checkbox">
+													<label>
+													  <input type="checkbox" id="remember" name="remember" checked>自动登陆
+													</label>
+												  </div>
+												</div>
+											</div>
+											
+											
+										  
+										 										
+									  </div>
+									  <div class="modal-footer">
+										<button type="reset" class="btn btn-default" data-dismiss="modal">取消</button>
+										<button type="submit" class="btn btn-primary">提交</button>
+									  </div>
+									  
+									  </form>
+									</div>
+								  </div>
+								</div>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="__PUBLIC__/assets/js/jquery.min.js"></script>
+<script src="__PUBLIC__/assets/js/bootstrap.min.js"></script>
+<script src="__PUBLIC__/assets/js/jquery.cookie.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="__PUBLIC__/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+
+
+
+<script>
+    $(function(){		
+		if($('#ssion').val()){
+			//Session操作
+			location.href = "__ROOT__/admin.php/index/mod";
+		}
+		else{
+			//Cookie操作
+			if($.cookie('username')&&$.cookie('password')){
+				//如果cookie非空，将值赋给用户名和密码的表单
+				$("#username").val($.cookie('username'));
+				$("#password").val($.cookie('password'));	
+				//直接提交表单
+				$("#adminlogin").submit();
+				
+			}
+		}
+		
+				
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+/* GLOBAL STYLES
+-------------------------------------------------- */
+
+a:-webkit-any-link {
+    color: -webkit-link;
+    text-decoration: none;
+    cursor: auto;
+}
+
+  .f_card {
+    padding: 10px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+
+.f_card .f_card_dt {
+    width: 80px;
+    height: 80px;
+    margin-right: 12px;
+    position: relative;
+    background-color: #f6f6f6;
+}
+
+.f_card_dt img {
+    width: 100%;
+    height: 100%;
+}
+
+img {
+    vertical-align: middle;
+    border: 0;
+    -ms-interpolation-mode: bicubic;
+}
+
+.f_card .f_card_dd {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    position: relative;
+}
+
+dd {
+    display: block;
+    -webkit-margin-start: 40px;
+}
+
+
+a:visited .f_card .f_card_h3 {
+    color: #888;
+}
+
+.f_card .f_card_h3 {
+    font-size: 2.0rem;
+    color: #000;
+    height: 20px;
+    line-height: 20px;
+    font-weight: 590;
+}
+
+
+.ellipsis {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+
+h3 {
+    display: block;
+    font-size: 2.17em;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+   }
+
+
+
+
+.card_module a:visited .f_card .f_card_p {
+    color: #9e9e9e;
+}
+
+
+/*.f_card .f_card_p {*/
+    /*font-size: 1.3rem;*/
+    /*color: #888;*/
+    /*height: 36px;*/
+    /*line-height: 18px;*/
+    /*padding-top: 4px;*/
+    /*overflow: hidden;*/
+/*}*/
+
+.f_card .f_card_p {
+    font-size: 1.3rem;
+    padding-top: 8px;
+}
+
+ p {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+
+.f_card .f_card_icon {
+    height: 17px;
+    background-color: #fff;
+    position: absolute;
+    right:  0;
+    bottom: 0;
+    padding-left: 10px;
+    background: -webkit-linear-gradient(left,rgba(255,255,255,0) 0,rgba(255,255,255,1) 10%);
+}
+
+
+
+
+.f_card .f_card_dd:after {
+    content: '';
+    width: 100%;
+    height: 1px;
+    background-color: #dfdfdf;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+}
+
+
+ h3, p, a,img ,dl, dt, dd, ol, ul, li,th, td , section,div,span,em{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+}

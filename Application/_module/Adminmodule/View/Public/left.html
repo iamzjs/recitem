@@ -1,0 +1,37 @@
+		<div class="container-fluid">
+      <div class="row row-offcanvas row-offcanvas-left">
+        <div class="col-xs-6 col-sm-3 col-md-2 sidebar sidebar-offcanvas" id="sidebar">
+          <ul class="nav nav-sidebar">
+		     <eq name="isadmin" value="1">
+			   <li>
+						<a href="#" data-target="#syssubmenu" data-toggle="collapse" class="accordion-toggle collapsed">
+						系统管理</a>
+						<ul style="padding-left:20px" class="nav collapse" id="syssubmenu">
+							<li><a href="{:U('func/index')}">菜单管理</a></li>
+						   <li><a href="{:U('index/form')}">创建新功能</a></li>
+						   <li><a href="{:U('index/mod')}">基本信息维护</a></li>
+							<li><a href="{:U('index/modpass')}">管理密码维护</a></li>
+							<li><a href="{:U('user/index')}">用户维护</a></li>
+							<li><a href="{:U('usergroup/index')}">用户组维护</a></li>
+							<li><a href="{:U('recpos/index')}">推荐位维护</a></li>
+							<volist name='mfunclist' id="vo">
+			  <li><a href="__ROOT__/admin.php/{$vo['url']}">{$vo.name}</a></li>
+			   </volist>	
+					  </ul>
+		
+					</li> 
+					</eq>	
+           <li><a href="{:U('special/index')}">专题维护</a></li>					
+				<volist name='funclist' id="vo">
+			   <li><a href="{:U($vo['url'])}">{$vo.name}</a></li>
+			   </volist>	
+			   
+            
+          </ul>
+          
+          
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main ">
+		<p class="pull-left visible-xs">
+                        <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle</button>
+                    </p>

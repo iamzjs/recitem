@@ -1,0 +1,45 @@
+<include file="Public:header" />
+<include file="Public:left" />
+
+<h2>评论维护</h2>
+<include file="Public:search" />
+<form method="post" onsubmit="return confirm('您确定要批量操作吗？')" action="{:U('bacts',array('tbl'=>'comment'))}">
+<input type="hidden" id="action" name="action" value="dels">
+<table  class="table table-striped lists">
+<tr>
+   <th>排序</th>
+   <th>选择</th>
+	<th>id</th>
+	<td>产品</td>
+	<td>评论者</td>
+	<td>评论</td>
+	<td>时间</td>	
+	<td>操作</td>
+</tr>
+<volist name="list" id="vo">
+<tr>
+  <td width="50"><input type="text" size="1" class="text-center" name="listorder[]" value="{$vo.listorder|default='1'}"></td>
+  <td width="50" class="text-center"><input type="checkbox" name="id[]" value="{$vo.id}" /></td>
+	<td width="50">{$vo.id}</td>
+  <td>{$vo.productname}</td>
+  <td>{$vo.username}</td>
+  <td>{$vo.comment}</td>
+  <td>{$vo.insert_time}</td>
+  
+  <td>
+  <a href="{:U('form',array('id'=>$vo['id']))}">回复</a>
+  
+  <a href="{:U('check',array('id'=>$vo['id'],'check'=>$vo['vstate'],'tbl'=>'comment'))}"><eq name="vo.vstate" value="0">审核<else/>取消审核</eq></a>
+  <a href="javascript:if(confirm('确认删除?')) location='{:U('del',array('id'=>$vo['id']))}'">删除</a>
+  </td>
+</tr>
+</volist>
+<tr><td colspan="8">
+<include file="Public:dels" />
+<input class="btn btn-default" id="doCheck" type="submit" value="批量审核" />
+</td></tr>
+</table>
+</form>
+{$page}
+<include file="Public:footer" />
+

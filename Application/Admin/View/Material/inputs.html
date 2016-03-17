@@ -1,0 +1,71 @@
+<load href="__PUBLIC__/ueditor143/ueditor.config.js"/>
+<load href="__PUBLIC__/ueditor143/ueditor.all.min.js"/><div class="form-group">
+					<label for="name" class="col-sm-2 control-label">名称</label>
+					<div class="col-sm-10"><input type="text" class="form-control" id="name" name="name" value="{$one["name"]}"  placeholder="" required></div></div><div class="form-group">
+					<label for="thumb" class="col-sm-2 control-label">缩略图</label>
+					<div class="col-sm-10"><input type="file" id="thumb" name="thumb" placeholder="" ></div></div><div class="form-group">
+					<label for="ressrcid" class="col-sm-2 control-label">来源</label>
+					<div class="col-sm-10"><select class="form-control" name="ressrcid" id="ressrcid"><empty name="one.ressrcid"><option value=""></option><else/><option value="{$one.ressrcid}">{$one.ressrcname}</option></empty><volist name="ressrclist" id="vo"><option value="{$vo.id}">{$vo.name}</option></volist></select></div></div><div class="form-group">
+					<label for="sctypeid" class="col-sm-2 control-label">素材类型</label>
+					<div class="col-sm-10"><select class="form-control" name="sctypeid" id="sctypeid"><empty name="one.sctypeid"><option value=""></option><else/><option value="{$one.sctypeid}">{$one.sctypename}</option></empty><volist name="sctypelist" id="vo"><option value="{$vo.id}">{$vo.name}</option></volist></select></div></div><div class="form-group">
+					<label for="attach" class="col-sm-2 control-label">素材</label>
+					<div class="col-sm-10"><input type="file" id="attach" name="attach" placeholder="" ></div></div><div class="form-group">
+					<label for="technoid" class="col-sm-2 control-label">技术</label>
+					<div class="col-sm-10"><select class="form-control" name="technoid" id="technoid"><empty name="one.technoid"><option value=""></option><else/><option value="{$one.technoid}">{$one.technoname}</option></empty>{$Think.config.TLIST}</select></div></div><div class="form-group">
+					<label for="kcdm" class="col-sm-2 control-label">课程</label>
+					<div class="col-sm-10"><select class="form-control" name="kcdm" id="kcdm"><empty name="one.kcdm"><option value=""></option><else/><option value="{$one.kcdm}">{$one.kcmc}</option></empty>{$Think.config.CLIST}</select></div></div><div class="form-group">
+					<label for="author" class="col-sm-2 control-label">作者</label>
+					<div class="col-sm-10"><textarea class="form-control" id="author" name="author" placeholder="" >{$one["author"]}</textarea></div></div><div class="form-group">
+					<label for="content" class="col-sm-2 control-label">内容</label>
+					<div class="col-sm-10"><div class="form-group">
+					    <script id="content" name="content" type="text/plain">{$one["content"]}</script>       
+					<script type="text/javascript">
+						UE.getEditor("content", {
+						theme:"default", //皮肤
+						lang:"zh-cn", //语言
+						initialFrameWidth:800,  //初始化编辑器宽度,默认800
+						initialFrameHeight:320,
+						toolbars: [
+							[
+								"source",
+								"undo",
+								"redo",
+								"bold",
+								"italic",
+								"underline",
+								"selectall",
+								"preview",
+								"horizontal",
+								"cleardoc",
+								 "fontfamily",
+								"fontsize",
+								"paragraph",
+								"simpleupload",
+								"insertimage",
+								 "link",
+								"emotion",
+								"justifyleft",
+								"justifyright",
+								"justifycenter",
+								"justifyjustify",
+								"forecolor",
+								"backcolor",
+								"insertorderedlist",
+								"insertunorderedlist",
+								"fullscreen",
+								"imagenone",
+								"imageleft",
+								"imageright",
+								"imagecenter",
+								"lineheight", 
+
+							]
+						]
+											});
+					</script>
+
+					</div></div></div><div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+				  <button type="submit" class="btn btn-default">提交</button>
+				</div>
+			  </div>

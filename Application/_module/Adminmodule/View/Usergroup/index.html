@@ -1,0 +1,56 @@
+<include file="Public:header" />
+<include file="Public:left" />
+<include file="title" />
+
+<hr />
+<h3>信息维护</h3>
+
+<include file="formsearch" />
+  <div class="form-group">
+    <div class="col-sm-4 col-sm-offset-6">
+			 <input type="text" class="form-control" name="search_key"  required>
+	  </div>
+    
+    <div class="col-xs-2 col-sm-2">
+     <input type="submit" class="btn btn-default" value="搜索">
+    </div>
+  </div>
+  
+
+</form>
+<form method="post" onsubmit="return confirm('您确定要批量操作吗？')" action="{:U('bacts')}">
+<input type="hidden" id="action" name="action" value="dels">
+<table  class="table table-striped lists">
+<tr>
+   <th>排序</th>
+   <th>选择</th>
+	<th>id</th>
+	<include file="th" />
+	<th>操作&nbsp;&nbsp;<a  href="{:U('form')}">添加</a>&nbsp;&nbsp;<a  href="{:U('incform')}">导入</a></th>
+</tr>
+<volist name="list" id="vo">
+<tr>
+  <td width="50"><input type="text" size="1" class="text-center" name="listorder[]" value="{$vo.listorder|default='1'}"></td>
+  <td width="50" class="text-center"><input type="checkbox" name="id[]" value="{$vo.id}" /></td>
+	<td width="50">{$vo.id}</td>
+    <include file="thv" />
+  
+  <td>
+  <a href="{:U('ugmember/index',array('groupid'=>$vo['id']))}">查看</a>
+<a href="{:U('mod',array('id'=>$vo['id'],'tbl'=>$tbl))}">修改</a>
+  <a href="javascript:if(confirm('确认删除?')) location='{:U('del',array('id'=>$vo['id'],'tbl'=>$tbl))}'">删除</a>
+  <a href="{:U('check',array('id'=>$vo['id'],'check'=>$vo['vstate']))}"><eq name="vo.vstate" value="0">审核<else/>取消审核</eq></a>
+  </td>
+</tr>
+</volist>
+<tr>
+<include file="colspan" />
+<include file="Public:dels" />
+<input class="btn btn-default" id="doCheck" type="submit" value="批量审核" />
+</td>
+</tr>
+</table>
+</form>
+{$page}
+<include file="Public:footer" />
+

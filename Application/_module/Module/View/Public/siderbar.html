@@ -1,0 +1,36 @@
+        <div class="col-xs-6 col-sm-2 col-sm-pull-10 sidebar-offcanvas jumbotron" id="sidebar">
+		      		 <notempty name="svlist">
+					
+		      		 <div class="list-group">
+                <h2>相关主题</h2>
+                <ul class="row list-unstyled">
+									<volist name="svlist" id="vo">
+                    <li class="col-xs-12">
+                        <a href="__ROOT__/video.php/show/index/id/{$vo['id']}">{$vo.name}</a>
+                      
+                    </li>
+									</volist>
+                    
+
+                </ul>
+            </div>
+			   </volist>
+					</notempty>
+					<volist name="reclist" id="list">
+		      		 <div class="list-group">
+                <h2>{$list['recname']}</h2>
+                <ul class="row list-unstyled">
+									<volist name="list.reclist" id="vo">
+                    <li class="col-xs-12">
+                        <a href="__ROOT__/{$list['rectbl']}.php/show/index/id/{$vo['id']}">{$vo.name}</a>
+                      
+                    </li>
+									</volist>
+                    
+
+                </ul>
+            </div>
+			   </volist>
+
+        </div>
+        <!--/.sidebar-offcanvas-->

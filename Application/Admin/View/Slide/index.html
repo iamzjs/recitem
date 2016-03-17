@@ -1,0 +1,39 @@
+<include file="Public:header" />
+<include file="Public:left" />
+
+<h2>幻灯片维护</h2>
+
+<form method="post" onsubmit="return confirm('您确定要批量操作吗？')" action="{:U('bacts',array('tbl'=>'slide'))}">
+<input type="hidden" id="action" name="action" value="dels">
+<table  class="table table-striped lists">
+<tr>
+   <th>排序</th>
+   <th>选择</th>
+	<td>id</td>
+	<td>标题</td>
+	<td>缩略图</td>
+	<td>操作&nbsp;&nbsp;<a href="{:U('form')}">添加</a></td>
+</tr>
+<volist name="list" id="vo">
+<tr>
+  <td width="50"><input type="text" size="1" class="text-center" name="listorder[]" value="{$vo.listorder|default='1'}"></td>
+  <td width="50" class="text-center"><input type="checkbox" name="id[]" value="{$vo.id}" /></td>
+	<td width="50">{$vo.id}</td>
+  <td>{$vo.name}</td>
+  <td>{$vo.thumb}</td>
+  
+  <td><a href="{:U('mod',array('id'=>$vo['id']))}">修改</a>
+  <a href="javascript:if(confirm('确认删除?')) location='{:U('del',array('id'=>$vo['id']))}'">删除</a>
+  
+  
+  </td>
+</tr>
+</volist>
+<tr><td colspan="6">
+<include file="Public:dels" />
+</td></tr>
+</table>
+</form>
+
+<include file="Public:footer" />
+

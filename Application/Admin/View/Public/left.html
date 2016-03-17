@@ -1,0 +1,53 @@
+		<div class="container-fluid">
+      <div class="row row-offcanvas row-offcanvas-left">
+        <div class="col-xs-6 col-sm-3 col-md-2 sidebar sidebar-offcanvas" id="sidebar">
+          <ul class="nav nav-sidebar">
+		       
+			  <eq name="isadmin" value="1">
+			  <li>
+						<a href="#" data-target="#syssubmenu" data-toggle="collapse" class="accordion-toggle collapsed">
+						系统管理</a>
+						<ul style="padding-left:20px" class="nav collapse" id="syssubmenu">
+						  <li><a href="{:U('module/index')}">模块管理</a></li>
+							<li><a href="{:U('func/index')}">菜单管理</a></li>
+						   <li><a href="{:U('index/form')}">创建新功能</a></li>
+						   <li><a href="{:U('index/mod')}">基本信息维护</a></li>
+							<li><a href="{:U('user/index')}">用户维护</a></li>
+							<li><a href="{:U('usergroup/index')}">用户组维护</a></li>		
+					  </ul>
+		
+					</li> 
+					<li>
+						<a href="#" data-target="#modsubmenu" data-toggle="collapse" class="accordion-toggle collapsed">
+						模块入口</a>
+						<ul style="padding-left:20px" class="nav collapse" id="modsubmenu">
+						  <volist name='modlist' id="vo">
+						  <neq name="vo.name" value="Admin">
+						  <li><a href="__ROOT__/{$vo.name|strtolower}.php">{$vo.cname}</a></li>
+						  </neq>
+						  </volist>
+						 </ul>
+					<li>
+				<volist name='funclist' id="vo">
+			   <li><a href="{:U($vo['url'])}">{$vo.name}</a></li>
+			   </volist>	
+			    </eq>  
+				<li><a href="{:U('index/modpass')}">密码维护</a></li>
+            <volist name='mod2list' id="vo">						  
+						  <li>
+						  <a href="#" data-target="#{$vo.name}" data-toggle="collapse" class="accordion-toggle collapsed">
+						{$vo.cname}维护</a>
+						
+						<ul style="padding-left:20px" class="nav collapse" id="{$vo.name}">
+						  <li><a href="{:U($vo['name'].'/index')}">{$vo.cname}</a></li>
+							<li><a href="{:U('special/index',array('mname'=>$vo['name']))}">专题</a></li>
+						</ul>
+						  </volist>
+          </ul>
+          
+          
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main ">
+		<p class="pull-left visible-xs">
+                        <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle</button>
+                    </p>

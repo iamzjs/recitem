@@ -1,0 +1,27 @@
+
+.i-lg {
+    font-size: 1.3333333333333em;
+    line-height: 0.75em;
+    vertical-align: -15%;
+}
+.wrapper-lg {
+  padding: 30px;
+}
+.m-t-none {
+  margin-top: 0;
+}
+.text-black {
+  color: #000;
+}
+.b-b {
+    border-bottom: 1px solid #eaeef1;
+}
+.line {
+    height: 2px;
+    margin: 10px 0;
+    font-size: 0;
+    overflow: hidden;
+}
+.text-muted {
+    color: #939aa0;
+}

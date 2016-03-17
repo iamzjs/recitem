@@ -1,0 +1,56 @@
+<include file="Public:header" />
+<include file="Public:left" />
+
+<h2>推荐位维护</h2>
+<form class="form-horizontal" action="{:U('search')}" method="post">
+  <div class="form-group">
+    <div class="col-xs-2 visible-xs"></div>
+    <div class="col-xs-8 col-sm-4 col-sm-offset-6">
+			 <input type="text" class="form-control" name="search_key"  required>
+	  </div>
+    
+    <div class="col-xs-2 col-sm-2">
+     <input type="submit" class="btn btn-default" value="搜索">
+    </div>
+  </div>
+  
+
+</form>
+<form method="post" onsubmit="return confirm('您确定要删除吗？')" action="{:U('dels')}">
+<table  class="table table-striped lists">
+<tr>
+	<td>选择</td>
+	<td>id</td>
+	<td>标题</td>
+	<td>摘要</td>
+	<td>操作&nbsp;&nbsp;<a href="{:U('form')}">添加</a></td>
+</tr>
+<volist name="list" id="vo">
+<tr>
+  <td><input type="checkbox" name="id[]" value="{$vo.id}"/></td>
+	<td>{$vo.id}</td>
+  <td>{$vo.name}</td>
+  <td>{$vo.description}</td>
+  <td>
+  <a href="{:U('itempos/index',array('id'=>$vo['id']))}">浏览</a>
+  <a href="{:U('mod',array('id'=>$vo['id']))}">修改</a>
+  <a href="javascript:if(confirm('确认删除?')) location='{:U('del',array('id'=>$vo['id']))}'">删除</a>
+  <a href="{:U('redisplay',array('id'=>$vo['id'],'display'=>$vo['display']))}">
+  <eq name="vo.display" value="1">已显示<else />已隐藏</eq>
+
+  </td> 
+</tr>
+</volist>
+<tr><td colspan="7">
+<input class="btn btn-default" id="selAll" type="button" value="全选" />
+
+<input class="btn btn-default" id="unSelAll" type="button" value="全不选" />
+
+<input class="btn btn-default" id="reverSel" type="button" value="反选" />
+<input class="btn btn-default" id="doDel" type="submit" value="删除" />
+</td></tr>
+</table>
+</form>
+{$page}
+<include file="Public:footer" />
+

@@ -1,0 +1,28 @@
+<include file="Public:header" />
+<include file="Public:left" />
+<h1>回复评论</h1>
+<form class="form-horizontal" action="{:U('add')}" method="post">
+  <input type="hidden" name="id" value="{$one.id}" >
+  <div class="form-group">
+    <label for="comment" class="col-sm-2 control-label">评论内容</label>
+    <div class="col-sm-10">
+			<textarea name="comment" class="form-control" id="comment" rows="3">{$one.comment}</textarea>
+    </div>
+  </div> 
+  <div class="form-group">
+    <label for="reply" class="col-sm-2 control-label">回复内容</label>
+    <div class="col-sm-10">
+			<textarea name="reply" class="form-control" id="reply" rows="3">{$one.reply}</textarea>
+    </div>
+  </div>  
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">提交</button>
+    </div>
+  </div>
+</form>
+
+
+<include file="Public:footer" />
+
+

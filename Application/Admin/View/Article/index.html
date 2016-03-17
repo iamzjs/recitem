@@ -1,0 +1,84 @@
+<include file="Public:header" />
+<include file="Public:left" />
+<include file="title" />
+<link href="__PUBLIC__/assets/css/jquery.dataTables.css" rel="stylesheet">
+<hr />
+<include file="formsearch" />
+<div class="form-group">
+<div class="col-sm-6"><h3>信息维护</h3></div>
+
+    <div class="col-sm-4">
+			 <input type="text" class="form-control" name="search_key"  required>
+	  </div>
+    
+    <div class="col-xs-2 col-sm-2">
+     <input type="submit" class="btn btn-default" value="搜索">
+    </div>
+  </div>
+  
+
+</form>
+
+
+<form method="post" onsubmit="return confirm('您确定要批量操作吗？')" action="{:U('bacts')}">
+<input type="hidden" id="action" name="action" value="dels">
+<table id="indexlist"  class="table table-striped lists">
+<thead>
+<tr>
+   <th>排序</th>
+   <th>选择</th>
+	<include file="th" />
+	<th>操作&nbsp;&nbsp;<a  href="{:U('form')}">添加</a>&nbsp;&nbsp;<a  href="{:U('incform')}">导入</a></th>
+</tr>
+</thead>
+<tbody>
+<volist name="list" id="vo">
+<tr>
+  <td width="50"><input type="text" size="1" class="text-center" name="listorder[]" value="{$vo.listorder|default='1'}"></td>
+  <td width="50" class="text-center"><input type="checkbox" name="id[]" value="{$vo.id}" /></td>
+    <include file="thv" />
+  
+  <td><include file="Public:buttons" />
+  <a href="{:U('check',array('id'=>$vo['id'],'check'=>$vo['vstate']))}"><eq name="vo.vstate" value="0">审核<else/>取消审核</eq></a>
+  </td>
+</tr>
+</volist>
+</tbody>
+<tr>
+<include file="colspan" />
+<include file="Public:dels" />
+<input class="btn btn-default" id="doCheck" type="submit" value="批量审核" />
+</td>
+</tr>
+</table>
+</form>
+{$page}
+<include file="Public:footer" />
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#indexlist').dataTable( {
+	info:false,
+	language: {
+                 "lengthMenu": "每页 _MENU_ 条记录",
+                 "zeroRecords": "没有找到记录",
+                 "info": "第 _PAGE_ 页 ( 总共 _PAGES_ 页 )",
+                 "infoEmpty": "无记录",
+                 "infoFiltered": "(从 _MAX_ 条记录过滤)",
+				 "sSearch":"页内搜索"
+             },
+    columnDefs: [ {
+      targets: [ 0 ],
+      orderData: [ 0, 1 ]  //如果第一列进行排序，有相同数据则按照第二列顺序排列
+    }, {
+      targets: [ 1 ],
+      orderData: [ 1, 0 ]  //如果第二列进行排序，有相同数据则按照第一列顺序排列
+    }, {
+      targets: [ 4 ],
+      orderData: [ 4, 0 ]  //如果第五列进行排序，有相同数据则按照第一列顺序排列
+    } ],
+	bPaginate:false,
+	} );
+} );
+</script>
+<script type="text/javascript" language="javascript" src="__PUBLIC__/assets/js/datatable/jquery.dataTables.js"></script>
+

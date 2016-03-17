@@ -1,0 +1,31 @@
+<include file="Public:header" />
+<include file="Public:left" />
+<h2>用户维护</h2>
+<table  class="table table-striped">
+<tr>
+	<td>id</td>
+	<td>用户名</td>
+	<td>姓名</td>
+	<td>性别</td>
+	<td>电话</td>	
+	<td>操作</td>
+</tr>
+<volist name="list" id="vo">
+<tr>
+	<td>{$vo.id}</td>
+  <td>{$vo.name}</td>
+  <td>{$vo.realname}</td>
+  <td>{$vo.sex}</td>
+  <td>{$vo.tel}</td>
+  
+  <td><a href="{:U('usermod',array('id'=>$vo['id']))}">修改</a>
+  <a href="javascript:if(confirm('确认删除?')) location='{:U('userdel',array('id'=>$vo['id']))}'">删除</a>
+  
+  <a href="{:U('userform')}">添加</a>
+  </td>
+</tr>
+</volist>
+</table>
+{$page}
+<include file="Public:footer" />
+

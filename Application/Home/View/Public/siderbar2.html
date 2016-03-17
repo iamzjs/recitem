@@ -1,0 +1,19 @@
+        <div class="col-xs-6 col-sm-3 col-sm-pull-9 sidebar-offcanvas jumbotron" id="sidebar">
+					<volist name="reclist" id="list">
+		      		 <div class="list-group">
+                <h2>热门{$list['recname']}</h2>
+                <ul class="row list-unstyled">
+									<volist name="list.reclist" id="vo">
+                    <li class="col-xs-12">
+                        <a href="__ROOT__/{$list['rectbl']}.php/show/index/id/{$vo['id']}">{$vo.name}</a>
+                      
+                    </li>
+									</volist>
+                    
+
+                </ul>
+            </div>
+			   </volist>
+
+        </div>
+        <!--/.sidebar-offcanvas-->

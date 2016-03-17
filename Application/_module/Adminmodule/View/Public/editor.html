@@ -1,0 +1,55 @@
+<load href="__PUBLIC__/ueditor143/ueditor.config.js"/>
+<load href="__PUBLIC__/ueditor143/ueditor.all.min.js"/>
+<div class="form-group">
+    <label for="tel" class="col-sm-2 control-label">内容</label>
+    <div class="col-sm-10">
+      <div class="form-group">
+					    <script id="content" name="content" type="text/plain">编辑内容</script>       
+					<script type="text/javascript">
+						UE.getEditor('content', {
+						theme:"default", //皮肤
+						lang:"zh-cn", //语言
+						initialFrameWidth:800,  //初始化编辑器宽度,默认800
+						initialFrameHeight:320,
+						toolbars: [
+							[
+								'source',
+								'undo', //撤销
+								'redo', //重做
+								'bold', //加粗
+								'italic', //斜体
+								'underline', //下划线
+								'selectall', //全选
+								'preview', //预览
+								'horizontal', //分隔线
+								'cleardoc', //清空文档
+								 'fontfamily', //字体
+								'fontsize', //字号
+								'paragraph', //段落格式
+								'simpleupload', //单图上传
+								'insertimage', //多图上传
+								 'link', //超链接
+								'emotion', //表情
+								'justifyleft', //居左对齐
+								'justifyright', //居右对齐
+								'justifycenter', //居中对齐
+								'justifyjustify', //两端对齐
+								'forecolor', //字体颜色
+								'backcolor', //背景色
+								'insertorderedlist', //有序列表
+								'insertunorderedlist', //无序列表
+								'fullscreen', //全屏
+								'imagenone', //默认
+								'imageleft', //左浮动
+								'imageright', //右浮动
+								'imagecenter', //居中
+								'lineheight', //行间距
+
+							]
+						]
+											});
+					</script>
+
+					</div>
+    </div>
+  </div>

@@ -1,0 +1,54 @@
+<include file="Public:header" />
+<include file="Public:left" />
+
+<h2>推荐位维护</h2>
+<form class="form-horizontal" action="{:U('search')}" method="post">
+  <div class="form-group">
+    <div class="col-xs-2 visible-xs"></div>
+    <div class="col-xs-8 col-sm-4 col-sm-offset-6">
+			 <input type="text" class="form-control" name="search_key"  required>
+	  </div>
+    
+    <div class="col-sm-2">
+     <input type="submit" class="btn btn-default" value="搜索">
+    </div>
+  </div>
+  
+
+</form>
+<form method="post" onsubmit="return confirm('您确定要批量操作吗？')" action="{:U('bacts',array('tbl'=>'prodpos'))}">
+<input type="hidden" id="action" name="action" value="dels">
+<table  class="table table-striped lists">
+<tr>
+   <td>排序</td>
+	<td>选择</td>
+    
+	<td>id</td>
+	<td>产品id</td>
+	<td>产品标题</td>
+	<td>操作</td>
+	
+</tr>
+<volist name="list" id="vo">
+<tr>
+  <td width="50"><input type="text" size="1" class="text-center" name="listorder[]" value="{$vo.listorder|default='1'}"></td>
+  <td width="50" class="text-center"><input type="checkbox" name="id[]" value="{$vo.id}" /></td>
+	<td width="50">{$vo.id}</td>
+    
+	<td>{$vo.prodid}</td>
+    <td>{$vo.prodname}</td>
+  <td>   
+   <a href="{:U('order',array('id'=>$vo['id'],'posid'=>$vo['posid'],'listorder'=>$vo['listorder']))}">上移</a>
+  <a href="javascript:if(confirm('确认删除?')) location='{:U('delprod',array('id'=>$vo['id'],'posid'=>$vo['posid']))}'">删除</a>
+  </td>
+  
+</tr>
+</volist>
+<tr><td colspan="7">
+<include file="Public:dels" />
+</td></tr>
+</table>
+</form>
+{$page}
+<include file="Public:footer" />
+

@@ -1,0 +1,28 @@
+<load href="__PUBLIC__/ueditor143/ueditor.config.js"/>
+<load href="__PUBLIC__/ueditor143/ueditor.all.min.js"/><div class="form-group">
+					<label for="name" class="col-sm-2 control-label">名称</label>
+					<div class="col-sm-10"><input type="text" class="form-control" id="name" name="name" value="{$one["name"]}"  placeholder="" required></div></div><div class="form-group">
+					<label for="thumb" class="col-sm-2 control-label">缩略图</label>
+					<div class="col-sm-10"><input type="file" id="thumb" name="thumb" placeholder="" ></div></div><div class="form-group">
+					<label for="description" class="col-sm-2 control-label">摘要</label>
+					<div class="col-sm-10"><textarea class="form-control" id="description" name="description" placeholder="" required>{$one["description"]}</textarea></div></div><div class="form-group">
+					<label for="ressrcid" class="col-sm-2 control-label">来源</label>
+					<div class="col-sm-10"><select class="form-control" name="ressrcid" id="ressrcid"><empty name="one.ressrcid"><option value=""></option><else/><option value="{$one.ressrcid}">{$one.ressrcname}</option></empty><volist name="ressrclist" id="vo"><option value="{$vo.id}">{$vo.name}</option></volist></select></div></div><div class="form-group">
+					<label for="technoid" class="col-sm-2 control-label">技术</label>
+					<div class="col-sm-10"><select class="form-control" name="technoid" id="technoid"><empty name="one.technoid"><option value=""></option><else/><option value="{$one.technoid}">{$one.technoname}</option></empty>{$Think.config.TLIST}</select></div></div><div class="form-group">
+					<label for="kcdm" class="col-sm-2 control-label">课程</label>
+					<div class="col-sm-10"><select class="form-control" name="kcdm" id="kcdm"><empty name="one.kcdm"><option value=""></option><else/><option value="{$one.kcdm}">{$one.kcmc}</option></empty>{$Think.config.CLIST}</select></div></div><div class="form-group">
+					<label for="sectionid" class="col-sm-2 control-label">知识模块</label>
+					<div class="col-sm-10"><select class="form-control" name="sectionid" id="sectionid"><empty name="one.sectionid"><option value=""></option><else/><option value="{$one.sectionid}">{$one.sectionname}</option></empty><volist name="sectionlist" id="vo"><option value="{$vo.id}">{$vo.name}</option></volist></select></div></div><div class="form-group">
+					<label for="author" class="col-sm-2 control-label">作者</label>
+					<div class="col-sm-10"><textarea class="form-control" id="author" name="author" placeholder="" >{$one["author"]}</textarea></div></div><div class="form-group">
+					<label for="clang" class="col-sm-2 control-label">语言</label>
+					<div class="col-sm-10"><input type="text" class="form-control" id="clang" name="clang" value="{$one["clang"]}"  placeholder="" ></div></div><div class="form-group">
+					<label for="swfattach" class="col-sm-2 control-label">swf附件</label>
+					<div class="col-sm-10"><input type="file" id="swfattach" name="swfattach" placeholder="" ></div></div><div class="form-group">
+					<label for="pdfattach" class="col-sm-2 control-label">pdf附件</label>
+					<div class="col-sm-10"><input type="file" id="pdfattach" name="pdfattach" placeholder="" ></div></div><div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+				  <button type="submit" class="btn btn-default">提交</button>
+				</div>
+			  </div>

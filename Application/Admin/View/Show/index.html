@@ -1,0 +1,64 @@
+<include file="Public:header" />
+<div class="container">
+    <div class="row row-offcanvas row-offcanvas-right">
+
+        <div class="col-xs-12 col-sm-9">
+
+					<p class="pull-right visible-xs">
+                        <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle</button>
+                    </p>
+                <div class="col-xs-12">
+                    
+
+                    <h1 class="brand-name text-center">{$one.name}</h1>
+					         
+							 <!-- 这里添加代码 --> 
+						
+
+            </div>
+            <!--/row-->
+            
+        </div>
+        <!--/.col-xs-12.col-sm-9-->
+		
+				<include file="Public:siderbar" />
+        
+    </div>
+    <!--/row-->
+	</div>
+<!--/.container-->
+
+<include file="Public:footer" />
+ <script>
+	$(function(){
+		$("#btn_comment").click(function(){
+			var comment = $("#comment").val();
+			var resourseid = {$one['id']};
+			var userid = {$Think.session.user.id};
+			var action = "__ROOT__/profile.php/index/comment";
+			if(comment==""){
+				alert("请填写评论内容");
+				return false;
+			}
+			$.ajax({
+				type:"POST",
+				url:action,
+				data:{"resourseid":resourseid,"userid":userid,"comment":comment},
+				success:function(json){
+					if(json.success==1){
+						//alert("评论成功！");
+						var username="{$Think.session.user.name}";
+						var htmlcon="<li  class='row'><div class='col-md-1'>"+username+"</div><div class='col-md-11'>"+json.comment+"</div></li><hr>";
+						$("#comment").hide();
+						$("#btn_comment").hide();
+						$("#comment_list").prepend(htmlcon);
+					}
+					else{
+						alert("您已经评论过该商品了，谢谢再次光顾！");
+						return false;
+					}
+				}
+			});
+		});
+	});
+</script>  

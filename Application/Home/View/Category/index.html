@@ -1,0 +1,44 @@
+<include file="Public:header" />
+<div class="container">
+    <div class="row row-offcanvas row-offcanvas-right">
+
+        <div class="col-xs-12 col-sm-9">
+
+
+            <div class="row text-center">
+			<p class="pull-right visible-xs">
+                        <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle</button>
+                    </p>
+               <volist name="product_list" id="vos"> 
+							<div class="col-xs-12 col-lg-12 mlist">
+                    <h2>{$vos['cat']['name']}</h2>
+                    <ul class="list-inline row text-center">
+											<volist name="vos.products" id="vo">
+                        <li class="col-xs-4 col-lg-2">
+                            <img src="__ROOT__/Uploads/{$vo.productthumb}" class="responsive img-thumbnail"/>
+
+                            <p><a href="{:U('home/show/index',array('id'=>$vo['id']))}">{$vo.name}</a>
+                            </p>
+                        </li>
+											</volist>
+                        
+
+                    </ul>
+                    <p><a class="btn btn-default" href="{:U('home/category/index',array('catid'=>$vos['cat']['id']))}" role="button">View details &raquo;</a></p>
+                </div>
+                <!--/.col-xs-6.col-lg-4-->
+				
+							</volist>
+
+            </div>
+            <!--/row-->
+        </div>
+        <!--/.col-xs-12.col-sm-9-->
+				<include file="Public:siderbar" />
+        
+    </div>
+    <!--/row-->
+	</div>
+<!--/.container-->
+<include file="Public:footer" />
+   

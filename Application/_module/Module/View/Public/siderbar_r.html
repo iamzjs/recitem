@@ -1,0 +1,31 @@
+        <div class="col-xs-6 col-sm-2 sidebar-offcanvas jumbotron" id="sidebar">
+					<notempty name="svlist">
+					
+		      		 <div class="list-group">
+                <h2>相关主题</h2>
+                <ul class="row list-unstyled">
+									<volist name="svlist" id="vo">
+                    <li class="col-xs-12">
+                        <a href="__ROOT__/video.php/show/index/id/{$vo['id']}">{$vo.name}</a>
+                      
+                    </li>
+									</volist>
+                    
+
+                </ul>
+            </div>
+			   </volist>
+					<else/>
+		      		 <div class="list-group">
+					   <volist name="tclist" id="list">
+                <h2><a href="__ROOT__/{$modname}.php/index/index/technoid/{$list['tpid']}">{$list['tpname']}</a></h2><ul class="row list-unstyled">
+							<volist name="list['tclist']" id="vo"><li class="col-xs-12"><a href="__ROOT__/{$modname}.php/index/index/technoid/{$vo['id']}">{$vo['name']}</a></li>
+							</volist>
+							</ul>
+				      </volist>
+				
+            </div>
+			</notempty>
+
+        </div>
+        <!--/.sidebar-offcanvas-->

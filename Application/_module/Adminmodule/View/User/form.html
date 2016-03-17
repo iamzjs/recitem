@@ -1,0 +1,62 @@
+<include file="Public:header" />
+<include file="Public:left" />
+<h1>添加用户</h1>
+<form class="form-horizontal" action="{:U('add')}" method="post">
+  <div class="form-group">
+    <label for="username" class="col-sm-2 control-label">用户名</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="username" name="name" required>
+    </div>
+  </div>
+  
+  
+  <div class="form-group">
+    <label for="password" class="col-sm-2 control-label">密码</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="password" name="password" required>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="realname" class="col-sm-2 control-label">真实姓名</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="realname" name="realname">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="sex" class="col-sm-2 control-label">性别</label>
+    <div class="col-sm-10">
+
+			<label class="radio-inline">
+			  <input type="radio" name="sex" id="sex" value="男" checked> 男
+			</label>
+			
+			<label class="radio-inline">
+			  <input type="radio" name="sex" id="sex2" value="女"> 女
+			</label>
+
+	
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="tel" class="col-sm-2 control-label">Tel</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="tel" name="tel">
+    </div>
+  </div>
+  
+  
+  
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">提交</button>
+    </div>
+  </div>
+</form>
+
+
+<include file="Public:footer" />
+
+

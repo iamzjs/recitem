@@ -1,0 +1,34 @@
+<form class="form-inline" method="post" action="{:U('search')}">
+				 <div class="form-group">
+					<select class="form-control" name="syear">
+					  <option value="">年级</option>
+					  <volist name="syear_list" id="vo" offset="0" length="10">
+						 <option value="{$vo.name}">{$vo.name}</option>
+					  </volist>
+					</select>
+				  </div>
+				   <div class="form-group">
+					<select class="form-control" name="zydm">
+					  <option value="">专业</option>
+					  <volist name="major_list" id="vo">
+						 <option value="{$vo.zydm}">{$vo.zymc}</option>
+					  </volist>
+					</select>
+				  </div>
+				  <div class="form-group">
+					
+					<select class="form-control" name="kcdm">
+					  <option value="">课程</option>
+					  <volist name="course_list" id="vo">
+						 <option value="{$vo.kcdm}">{$vo.kcmc}</option>
+					  </volist>
+					</select>
+				  </div>
+				  <div class="form-group">
+					
+					<input type="text" class="form-control" id="jsxm" size="12" name="jsxm" placeholder="教师">
+				  </div>
+				  
+				  
+				  <button type="submit" class="btn btn-default">搜索</button>
+				</form>

@@ -1,0 +1,50 @@
+<li><a href="{:U('index/form')}">创建模块</a></li>
+				<li><a href="{:U('user/index')}">用户维护</a></li>
+           					
+					<li>
+						<a href="#" data-target="#newssubmenu" data-toggle="collapse" class="accordion-toggle collapsed">
+						新闻管理</a>
+						<ul style="padding-left:20px" class="nav collapse" id="newssubmenu">
+							<li><a href="{:U('news/index','type=1')}">公司新闻</a></li>
+							<li><a href="{:U('news/index','type=2')}">行业新闻</a></li>
+							<li><a href="{:U('news/form')}">新增新闻</a></li>			
+					  </ul>
+		
+					</li>
+						
+						<li>
+							<a href="#" data-target="#catsubmenu" data-toggle="collapse" class="accordion-toggle collapsed">
+							产品类别管理</a>
+							<ul style="padding-left:20px" class="nav collapse" id="catsubmenu">
+								<li><a href="{:U('category/index',array('parentid'=>0))}">产品类别维护</a></li>
+								<li><a href="{:U('category/form')}">新增产品类别</a></li>			
+						  </ul>
+			
+						</li>
+						
+						<li>
+							<a href="#" data-target="#prodsubmenu" data-toggle="collapse" class="accordion-toggle collapsed">
+							产品管理</a>
+							<ul style="padding-left:20px" class="nav collapse" id="prodsubmenu">
+								<volist name="Think.session.catlist" id="vos">
+								<empty name="vos.subcat">
+									<li><a href="{:U('product/index',array('catid'=>$vos['catid']))}">{$vos.name}</a></li>
+								</empty>
+								<notempty name="vos.subcat">
+									<li><a href="#" data-target="#prod{$vos.catid}" data-toggle="collapse" class="accordion-toggle collapsed">{$vos.name}</a>
+									<ul style="padding-left:25px" class="nav collapse" id="prod{$vos.catid}">
+										<volist name="vos.subcat" id="vo">
+											<li><a href="{:U('product/index',array('catid'=>$vo['id']))}">{$vo.name}</a></li>
+										</volist>
+									</ul>
+									</li>
+								</notempty>
+								</volist>
+									
+						  </ul>
+			
+						</li>
+                        <li><a href="{:U('comment/index')}">评论维护</a></li>
+            <li><a href="{:U('recpos/index')}">推荐位管理</a></li>
+            <li><a href="{:U('index/mod')}">基本信息维护</a></li>
+               <li><a href="{:U('slide/index')}">幻灯片维护</a></li>

@@ -1,0 +1,75 @@
+		 </div>
+		</div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+		<load href="__PUBLIC__/assets/js/jquery.min.js" />
+    <load href="__PUBLIC__/assets/js/bootstrap.min.js" />
+    
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="assets/js/vendor/holder.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+	<script type="text/javascript">
+$(document).ready(function(){
+   $('[data-toggle="offcanvas"]').click(function () {
+        $('.row-offcanvas').toggleClass('active')
+    });
+  $("#selAll").click(function(){
+  $(".lists :checkbox").not(':disabled').prop("checked", true);
+  });
+  $("#unSelAll").click(function () {
+
+        $(".lists :checkbox").not(':disabled').prop("checked", false);
+
+    });
+
+    $("#reverSel").click(function () {
+
+        //遍历.lists下的 checkbox;
+
+        $(".lists :checkbox").not(':disabled').each(function () {
+
+            $(this).prop("checked", !$(this).prop("checked"));
+
+        });
+
+    });
+	
+	$("#doDel").click(function () {
+
+        //遍历.lists下的 checkbox;
+
+        if($(".lists :checked").length==0){
+		alert("至少选择一项！");
+		return false;
+		}
+		$("#action").val("dels");
+
+    });
+	$("#doCheck").click(function () {
+		$("#action").val("checks");
+    });
+	$("#listorder").click(function () {
+		$(".lists :checkbox").not(':disabled').prop("checked", true);
+		$("#action").val("listorder");
+		
+    });
+	
+	$("#rec_pos").click(function () {
+
+        $("#action").val("rec_pos");
+
+    });
+	
+	$("#ug").click(function () {
+
+        $("#action").val("ug");
+
+    });
+});
+</script>
+  </body>
+</html>

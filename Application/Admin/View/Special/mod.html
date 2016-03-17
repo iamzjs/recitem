@@ -1,0 +1,15 @@
+<include file="Public:header" />
+<include file="Public:left" />
+<include file="title" />
+
+<hr />
+<h3>修改信息</h3>
+<form class="form-horizontal" action="{:U('update',array('mname'=>$mname))}" method="post" enctype="multipart/form-data">
+  <input type="hidden" name="id" value="{$one.id}" />
+  <input type="hidden" name="userid" value="{$Think.session.admin.id}">
+  <input type="hidden" name="moduleid" value="{$moduleid}">
+  <include file="inputs" />
+</form>
+
+
+<include file="Public:footer" />

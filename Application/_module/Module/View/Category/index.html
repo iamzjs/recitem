@@ -1,0 +1,51 @@
+<include file="Public:header" />
+<div class="container">
+    <div class="row row-offcanvas row-offcanvas-right">
+
+        <div class="col-xs-12 col-sm-9">
+         			 <div  class="jumbotron">
+			<p class="pull-right visible-xs">
+                        <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle</button>
+                    </p>
+					 <!-- 这里添加代码 --> 
+					<volist name="reslist" id="list">     
+
+			<h2>{$list['resname']}</h2>
+				<ul class="list-inline row mlist">
+					<volist name="list['reslist']" id="vo">
+                <li class="col-xs-6 col-md-3">
+				      <div class="thumbnail">
+                 <img src="__ROOT__/Uploads/{$vo.thumb}" class="responsive"/>
+							<div class="caption">
+                <p class="text-center"><a href="{:U('show/index',array('id'=>$vo['id']))}">{$vo['name']|msubstr=###,0,20,'utf-8',false}</a>
+				
+                 </p>
+				     </div>
+					 </div>
+                </li>
+				<eq name="i%2" value="0">
+				<div class="clearfix visible-xs-block visible-sm-block"></div>
+				</eq>
+				<eq name="i%4" value="0">
+				<div class="clearfix visible-md-block visible-lg-block"></div>
+				</eq>
+				</volist>
+             </ul>
+			 
+			 <p class="text-center"><a class="btn btn-default" href="{:U('list/index',array('tid'=>$list['ctid']))}" role="button">View details &raquo;</a></p>
+          
+		    </volist>
+				</div>	
+              
+                <!--/.col-xs-6.col-lg-4-->
+
+        </div>
+        <!--/.col-xs-12.col-sm-9-->
+				<include file="Public:siderbar" />
+        
+    </div>
+    <!--/row-->
+	</div>
+<!--/.container-->
+<include file="Public:footer" />
+   
