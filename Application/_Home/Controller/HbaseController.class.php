@@ -11,7 +11,7 @@ class HbaseController extends Controller {
 		$corp = $this->corp_model->find();
 		$this->assign('corp',$corp);
 		//模块列表
-		$this->modlist = M('module')->where('id>6 and type=2')->order('listorder desc')->select();
+		$this->modlist = M('module')->where('id>2 and type=2')->order('listorder desc')->select();
 		$this->assign('modlist',$this->modlist);
 		
 		
@@ -27,18 +27,5 @@ class HbaseController extends Controller {
 			$reclist[]=$rec;
 		}
 		$this->assign('reclist',$reclist);
-		
-		//导航课程
-		$courselist =  array();
-		$this->tlist = M('techno')->where('parentid=0')->select();
-		
-		foreach($this->tlist as $tt){
-			$tec=array();
-			$tec['tname']=$tt['name'];
-			$sql = 'select * from course t1 left join techno t2 on t1.technoid = t2.id left join techno t3 on t2.parentid = t3.id where t2.parentid = '.$tt['id'].' order by t1.listorder desc';
-			$tec['clist'] = M()->query($sql);
-			$courselist[]=$tec;
-		}
-		$this->assign('courselist',$courselist);
 	}	
 }
